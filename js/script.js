@@ -129,16 +129,20 @@ cart_icon.addEventListener('click', function (e) {
 });
 document.documentElement.addEventListener("click", function (e) {
   if (!e.target.closest('.top-content__cart-wrapper')) {
-    var close_cart = document.querySelector('.top-content__cart-home');
-    close_cart.classList.remove('_active');
+    var closeCart = document.querySelector('.top-content__cart-home');
+    closeCart.classList.remove('_active');
   }
 });
-var close_cart = document.querySelector('.cart-home__close');
-close_cart.addEventListener('click', function (e) {
-  var cartBody = document.querySelector('.top-content__cart-home');
-  cartBody.classList.remove('_active');
-  document.body.classList.remove('_lock');
-});
+
+if (document.querySelector('.cart-home__close')) {
+  var close_cart = document.querySelector('.cart-home__close');
+  close_cart.addEventListener('click', function (e) {
+    var cartBody = document.querySelector('.top-content__cart-home');
+    cartBody.classList.remove('_active');
+    document.body.classList.remove('_lock');
+  });
+}
+
 $(document).ready(function () {
   $(window).scroll(function () {});
 });
