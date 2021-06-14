@@ -82,8 +82,7 @@ if (menuArrow.length > 0) {
   ;
 }
 
-; // нужно покумекать не закрывает пункты меню при клике вне области
-
+;
 document.documentElement.addEventListener("click", function (e) {
   var menuActive = document.querySelector('.menu-category__li');
 
@@ -121,12 +120,24 @@ var cart_icon = document.querySelector('.top-content__cart');
 cart_icon.addEventListener('click', function (e) {
   var cart_body = document.querySelector('.top-content__cart-home');
   cart_body.classList.toggle('_active');
+
+  if (document.documentElement.clientWidth <= 612) {
+    document.body.classList.toggle('_lock');
+  }
+
+  ;
 });
 document.documentElement.addEventListener("click", function (e) {
   if (!e.target.closest('.top-content__cart-wrapper')) {
     var close_cart = document.querySelector('.top-content__cart-home');
     close_cart.classList.remove('_active');
   }
+});
+var close_cart = document.querySelector('.cart-home__close');
+close_cart.addEventListener('click', function (e) {
+  var cartBody = document.querySelector('.top-content__cart-home');
+  cartBody.classList.remove('_active');
+  document.body.classList.remove('_lock');
 });
 $(document).ready(function () {
   $(window).scroll(function () {});
